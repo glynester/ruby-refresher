@@ -172,32 +172,38 @@ end
 # add all the keys and all the values together, e.g.
 # {1 => 1, 2 => 2} becomes 6
 def add_together_keys_and_values(hash)
-  
+  arr = hash.to_a
+  arr.map{|v| v[0]+v[1]}.reduce(:+)
 end
 
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
+string.each_char.select{|c| !(/[[:upper:]]/ =~ c) }.join
 end
 
 # round up a float up and convert it to an Integer,
 # so 3.214 becomes 4
 def round_up_number(float)
+  float.ceil
 end
 
 # round down a float up and convert it to an Integer,
 # so 9.52 becomes 9
 def round_down_number(float)
+  float.floor
 end
 
 # take a date and format it like dd/mm/yyyy, so Halloween 2013
 # becomes 31/10/2013
 def format_date_nicely(date)
+  date.strftime("%d/%m/%Y")
 end
 
 # get the domain name *without* the .com part, from an email address
 # so alex@makersacademy.com becomes makersacademy
 def get_domain_name_from_email_address(email)
+  new_str = email[(email.index("@")+1)..(email.index('.')-1)]
 end
 
 # capitalize the first letter in each word of a string,
@@ -206,6 +212,16 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
+  str = string.split(" ").map{|word|
+    if ((['a', 'and', 'the'].include? (string.split(" ")[0]).downcase))
+      if ['a', 'and', 'the'].include? word
+        word
+      elsif word[0].upcase
+         word[0].upcase + word[1..-1]
+      end
+    end
+  }
+  str.join(" ")
 end
 
 # return true if a string contains any special characters

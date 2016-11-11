@@ -131,7 +131,7 @@ describe 'the Friday test :)' do
     expect(n).to eq({'b' => 'a', 'd' => 'c'})
   end
 
-  fit 'add_together_keys_and_values' do
+  it 'add_together_keys_and_values' do
     n = add_together_keys_and_values({1 => 1, 2 => 2})
     expect(n).to eq 6
   end
@@ -151,7 +151,7 @@ describe 'the Friday test :)' do
     expect(n).to eq 4
   end
 
-  it 'format_date_nicely' do
+it 'format_date_nicely' do
     n = format_date_nicely Time.new(2013, 10, 31)
     expect(n).to eq '31/10/2013'
   end
@@ -161,7 +161,7 @@ describe 'the Friday test :)' do
     expect(n).to eq 'makersacademy'
   end
 
-  it 'titleize_a_string' do
+  fit 'titleize_a_string' do
     n = titleize_a_string 'the lion the witch and the wardrobe'
     expect(n).to eq 'The Lion the Witch and the Wardrobe'
   end
