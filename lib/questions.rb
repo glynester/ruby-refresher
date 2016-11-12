@@ -23,7 +23,7 @@ end
 # remove instances of nil AND false from an array
 def remove_nils_and_false_from_array(array)
   array.select{ |item|
-    item if item != nil and item != false
+    item if item != nil or item != false
   }
 end
 
@@ -160,6 +160,7 @@ def convert_array_to_a_hash(array)
   end
   Hash[pairs]
 end
+#Better solution => Hash(array)
 
 # get all the letters used in an array of words and return
 # it as a array of letters, in alphabetical order
@@ -242,7 +243,7 @@ end
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
-   /\W/ === string ? true : false
+   /\W/ === string
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
@@ -339,7 +340,6 @@ def count_words_of_each_length_in_a_file(file_path)
   text.each {|word| result[word.length]+= 1}
   result.sort
 end
-count_words_of_each_length_in_a_file('data/lorem1.txt')
 
 # implement fizzbuzz without modulo, i.e. the % method
 # go from 1 to 100
