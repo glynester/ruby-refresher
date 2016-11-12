@@ -212,13 +212,13 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
-  str = string.split(" ").map{|word|
-    if ((['a', 'and', 'the'].include? (string.split(" ")[0]).downcase))
-      if ['a', 'and', 'the'].include? word
-        word
-      elsif word[0].upcase
-         word[0].upcase + word[1..-1]
-      end
+  str = string.split(" ").each_with_index.map{|word, i|
+    if i==0 && ((['a', 'and', 'the'].include? (string.split(" ")[0])))
+      word[0].upcase + word[1..-1]
+    elsif ['a', 'and', 'the'].include? word
+      word
+    elsif word[0].upcase
+       word[0].upcase + word[1..-1]
     end
   }
   str.join(" ")
@@ -228,20 +228,28 @@ end
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
+   /\W/ === string ? true : false
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
+  range.last
 end
 
 # should return true for a 3 dot range like 1...20, false for a
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+  if (range.eql?(Range.new(range.begin,range.end,exclude_end=true)))
+    true
+  else (range.eql?(Range.new(range.begin,range.end,exclude_end=false)))
+    false
+  end
 end
 
 # get the square root of a number
 def square_root_of(number)
+  Math.sqrt(number)
 end
 
 # count the number of words in a file
@@ -260,6 +268,16 @@ end
 # the list of bank holidays is here:
 # https://www.gov.uk/bank-holidays
 def is_a_2014_bank_holiday?(date)
+  holidays = ["2014,12,26", "2014,12,25", "2014,8,25",
+    "2014,5,26","2014,5,5", "2014,4,21", "2014,4,18", "2014,1,1"]
+  holidaydates = []
+  holidays.each{|d|
+    year = d.split(",")[0].to_i
+    month = d.split(",")[1].to_i
+    day = d.split(",")[2].to_i
+    holidaydates << Time.new(year,month,day)
+  }
+  (holidaydates.include? date) ? true : false
 end
 
 # given your birthday this year, this method tells you
