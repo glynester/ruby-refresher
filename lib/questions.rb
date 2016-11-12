@@ -268,6 +268,12 @@ end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
+  filesents = ""
+  file =File.open(file_path,"r")
+  while (line=file.gets)
+    filesents += line
+  end
+  filesents.split(" ").length
 end
 
 # --- tougher ones ---
@@ -276,7 +282,7 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
-  raise NameError if str_method = 'foobar'
+  raise NameError if str_method == 'foobar'
 end
 
 # return true if the date is a uk bank holiday for 2014
@@ -320,7 +326,20 @@ end
 # and 1 that is 4 letters long. Return it as a hash in the format
 # word_length => count, e.g. {2 => 1, 3 => 5, 4 => 1}
 def count_words_of_each_length_in_a_file(file_path)
+  file = File.open(file_path,"r")
+  text = ""
+  while (line = file.gets)
+    text += line
+  end
+  text = text.split(" ")
+  text.map{|w|
+    w[-1] = "" if [",","."].include? w[-1]
+  }
+  result = Hash.new(0)
+  text.each {|word| result[word.length]+= 1}
+  result.sort
 end
+count_words_of_each_length_in_a_file('data/lorem1.txt')
 
 # implement fizzbuzz without modulo, i.e. the % method
 # go from 1 to 100

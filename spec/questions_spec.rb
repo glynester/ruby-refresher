@@ -196,7 +196,7 @@ it 'format_date_nicely' do
 
   it 'word_count_a_file' do
     n = word_count_a_file 'data/lorem.txt'
-    expect(n).to eq 70
+    expect(n).to eq 113
   end
 
   it 'call_method_from_string' do
@@ -217,7 +217,7 @@ it 'format_date_nicely' do
   end
 
   it 'count_words_of_each_length_in_a_file' do
-    n = count_words_of_each_length_in_a_file('data/lorem.txt') || []
+    n = count_words_of_each_length_in_a_file('data/lorem1.txt') || []
     expect(Hash[n.sort]).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3})
   end
 
@@ -230,7 +230,7 @@ it 'format_date_nicely' do
     "Fizz",67,68,"Fizz","Buzz",71,"Fizz",73,74,"FizzBuzz",76,77,"Fizz",
     79,"Buzz","Fizz",82,83,"Fizz","Buzz",86,"Fizz",88,89,"FizzBuzz",
     91,92,"Fizz",94,"Buzz","Fizz",97,98,"Fizz","Buzz"]
-    expect(fizzbuzz_without_modulo).to eq(fizz_buzz) 
+    expect(fizzbuzz_without_modulo).to eq(fizz_buzz)
   end
 
 
