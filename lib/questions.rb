@@ -367,5 +367,20 @@ end
 # beer on the wall, and print 'no more bottles of beer on the wall'
 # at the end.
 # (there's no RSpec test for this one)
+
 def ninety_nine_bottles_of_beer
+  i = 99
+  song = ""
+  until i==2
+    song << "#{i} bottles of beer on the wall, #{i} bottles of beer.\n"
+    song << "Take one down and pass it around, #{i-1} bottles of beer on the wall.\n\n"
+    i-=1
+  end
+  song << "#{i} bottles of beer on the wall, #{i} bottles of beer.\n"
+  song << "Take one down and pass it around, #{i-1} bottle of beer on the wall.\n\n"
+  i-=1
+  song << "#{i} bottle of beer on the wall, #{i} bottle of beer.\n"
+  song << "Take one down and pass it around, no more bottles of beer on the wall.\n\n"
+  song << "No more bottles of beer on the wall, no more bottles of beer.\n"
+  song << "Go to the store and buy some more, 99 bottles of beer on the wall.\n\n"
 end

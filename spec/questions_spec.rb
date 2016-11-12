@@ -233,5 +233,21 @@ it 'format_date_nicely' do
     expect(fizzbuzz_without_modulo).to eq(fizz_buzz)
   end
 
-
+  it 'ninety_nine_bottles_of_beer' do
+    song = alt_song
+    expect(ninety_nine_bottles_of_beer).to eq(alt_song)
+  end
+  def alt_song
+    song = ""
+    down = "Take one down and pass it around, "
+    zero = "Go to the store and buy some more, "
+    99.downto(0) do |n|
+      song << "#{n==0? 'No more' : n} #{n==1? 'bottle' : 'bottles'}" +
+      " of beer on the wall, #{n==0? 'no more' : n} " +
+      "#{n==1? 'bottle' : 'bottles'} of beer.\n" +
+      "#{n==0? zero : down}#{n==1? 'no more' : (n==0? 99 : (n-1))} " +
+      "#{n==2? 'bottle' : 'bottles'} of beer on the wall.\n\n"
+    end
+    song
+  end
 end
