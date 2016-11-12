@@ -311,7 +311,21 @@ end
 # go from 1 to 100
 # (there's no RSpec test for this one)
 def fizzbuzz_without_modulo
+  fb_array = []
+  (1..100).each do |i|
+    if (i/3.to_f )- i/3 == 0 && (i/5.to_f ) - i/5 == 0
+      fb_array << "FizzBuzz";
+    elsif (i/3.to_f )- i/3 == 0
+      fb_array << "Fizz";
+    elsif (i/5.to_f) - i/5 == 0
+      fb_array << "Buzz";
+    else
+      fb_array << i;
+    end
+  end
+  fb_array
 end
+
 
 # print the lyrics of the song 99 bottles of beer on the wall
 # http://www.99-bottles-of-beer.net/lyrics.html
