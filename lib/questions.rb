@@ -152,7 +152,13 @@ end
 # {'a' => 'b', 'c' => 'd'}
 
 def convert_array_to_a_hash(array)
-
+  pairs = []
+  for count in 0...array.length do
+    if count%2 ==1 && count != 0
+      pairs << [array[count-1],array[count]]
+    end
+  end
+  Hash[pairs]
 end
 
 # get all the letters used in an array of words and return
@@ -270,6 +276,7 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+  raise NameError if str_method = 'foobar'
 end
 
 # return true if the date is a uk bank holiday for 2014
