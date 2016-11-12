@@ -40,6 +40,14 @@ end
 # [['Bob', 'Clive'], ['Bob', 'Dave'], ['Clive', 'Dave']]
 # make sure you don't have the same pairing twice,
 def every_possible_pairing_of_students(array)
+  len = array.length
+  combs_arr = []
+  for count in 0..len do
+    for counter in count+1..len-1 do
+      combs_arr << [array[count],array[counter]]
+    end
+  end
+  combs_arr
 end
 
 # discard the first 3 elements of an array,
